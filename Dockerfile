@@ -8,7 +8,9 @@ RUN wget https://downloads.sourceforge.net/project/firoorg/firo-0.14.9.0-linux64
 RUN tar xzvf /tmp/firo-0.14.9.0-linux64.tar.gz -C /tmp \
 && cp /tmp/firo-0.14.9/bin/* /usr/local/bin
 COPY node_initialize.sh /node_initialize.sh
+COPY check-health.sh /check-health.sh
 VOLUME /root/.firo
-RUN chmod 755 node_initialize.sh
+RUN chmod 755 node_initialize.sh check-health.sh
 EXPOSE 8168
+HEALTHCHECK --start-period=5m --interval=1m --retries=5 --timeout=15s CMD ./check-health.sh
 CMD ./node_initialize.sh
