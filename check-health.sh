@@ -29,7 +29,7 @@ if egrep -o "^[0-9]+$" <<< "$NETWORK_BLOCK_HEIGHT" &>/dev/null; then
   DIFF=${DIFF#-}
 else
   echo "Daemon working but check cant veryfity sync with network..."
-  exit 1
+  exit
 fi
 
 if [[ "$DIFF" -le 10 ]]; then
