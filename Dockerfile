@@ -12,5 +12,5 @@ COPY check-health.sh /check-health.sh
 VOLUME /root/.firo
 RUN chmod 755 node_initialize.sh check-health.sh
 EXPOSE 8168
-HEALTHCHECK --start-period=5m --interval=1m --retries=5 --timeout=15s CMD ./check-health.sh
+HEALTHCHECK --start-period=5m --interval=2m --retries=5 --timeout=15s CMD ./check-health.sh
 CMD ./node_initialize.sh
