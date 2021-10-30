@@ -38,5 +38,5 @@ EOF
 
 while true; do
 firod -daemon
-sleep 10000
+sleep 60
 done
