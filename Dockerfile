@@ -4,9 +4,9 @@ FROM ubuntu:${UBUNTUVER}
 
 RUN mkdir -p /root/.firo
 RUN apt-get update && apt-get install -y  tar wget curl pwgen jq
-RUN wget https://github.com/firoorg/firo/releases/download/v0.14.9.1/firo-0.14.9.1-linux64.tar.gz -P /tmp
-RUN tar xzvf /tmp/firo-0.14.9.1-linux64.tar.gz -C /tmp \
-&& cp /tmp/firo-0.14.9/bin/* /usr/local/bin
+RUN wget https://github.com/firoorg/firo/releases/download/v0.14.9.2/firo-0.14.9.2-linux64.tar.gz -P /tmp
+RUN tar xzvf /tmp/firo-0.14.9.2-linux64.tar.gz -C /tmp \
+&& cp /tmp/firo-738308bfcb13/bin/* /usr/local/bin
 COPY node_initialize.sh /node_initialize.sh
 COPY check-health.sh /check-health.sh
 VOLUME /root/.firo
