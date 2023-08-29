@@ -35,6 +35,6 @@ fi
 if [[ "$DIFF" -le 10 ]]; then
  echo "Daemon working and is synced with network (block height: $CURRENT_NODE_HEIGHT)"
 else
- echo "Daemon working but is not synced with network"
+ echo "Daemon working but is not synced with network (block height: $NETWORK_BLOCK_HEIGHT/$CURRENT_NODE_HEIGHT)"
  exit 1
 fi
