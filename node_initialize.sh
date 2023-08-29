@@ -37,6 +37,8 @@ znodeblsprivkey=$KEY
 EOF
 
 while true; do
-firod -daemon
-sleep 60
+ if [[ $(pgrep firod) == "" ]]; then 
+   firod -daemon
+ fi
+sleep 120
 done
