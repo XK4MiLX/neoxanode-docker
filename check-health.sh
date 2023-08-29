@@ -4,14 +4,14 @@ function max(){
 
     m="0"
     for n in "$@"
-    do        
+    do
         if egrep -o "^[0-9]+$" <<< "$n" &>/dev/null; then
             [ "$n" -gt "$m" ] && m="$n"
         fi
     done
-    
+
     echo "$m"
-    
+
 }
 
 NETWORK_BLOCK_HEIGHT1=$(curl -SsL https://chainz.cryptoid.info/firo/api.dws?q=getblockcount)
@@ -29,12 +29,15 @@ if egrep -o "^[0-9]+$" <<< "$NETWORK_BLOCK_HEIGHT" &>/dev/null; then
   DIFF=${DIFF#-}
 else
   echo "Daemon working but check cant veryfity sync with network..."
+  echo "Daemon working but check cant veryfity sync with network..." >> /proc/1/fd/1
   exit
 fi
 
 if [[ "$DIFF" -le 10 ]]; then
  echo "Daemon working and is synced with network (block height: $CURRENT_NODE_HEIGHT)"
+ echo "Daemon working and is synced with network (block height: $CURRENT_NODE_HEIGHT)" >> /proc/1/fd/1
 else
- echo "Daemon working but is not synced with network (block height: $NETWORK_BLOCK_HEIGHT/$CURRENT_NODE_HEIGHT)"
+ echo "Daemon working but is not synced with network (block height: $NETWORK_BLOCK_HEIGHT/$CURRENT_NODE_HEIGHT, left: $DIFF)"
+ echo "Daemon working but is not synced with network (block height: $NETWORK_BLOCK_HEIGHT/$CURRENT_NODE_HEIGHT, left: $DIFF)" >> /proc/1/fd/1
  exit 1
 fi
