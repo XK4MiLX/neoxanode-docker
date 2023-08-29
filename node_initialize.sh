@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
 function get_ip() {
-
     WANIP=$(curl --silent -m 15 https://api4.my-ip.io/ip | tr -dc '[:alnum:].')
-
-    if [[ "$WANIP" == "" ]]; then
-      WANIP=$(curl --silent -m 15 https://checkip.amazonaws.com | tr -dc '[:alnum:].')
-    fi
-
-    if [[ "$WANIP" == "" ]]; then
-      WANIP=$(curl --silent -m 15 https://api.ipify.org | tr -dc '[:alnum:].')
+    if [[ "$WANIP" == "" || "$WANIP" = *htmlhead* ]]; then
+        WANIP=$(curl --silent -m 15 https://checkip.amazonaws.com | tr -dc '[:alnum:].')    
+    fi  
+    if [[ "$WANIP" == "" || "$WANIP" = *htmlhead* ]]; then
+        WANIP=$(curl --silent -m 15 https://api.ipify.org | tr -dc '[:alnum:].')
     fi
 }
 
