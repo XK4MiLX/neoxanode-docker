@@ -20,6 +20,7 @@ NETWORK_BLOCK_HEIGHT2=$(curl -SsL https://explorer.firo.org/api/status?q=getInfo
 CURRENT_NODE_HEIGHT=$(firo-cli getinfo | jq '.blocks')
 if ! egrep -o "^[0-9]+$" <<< "$CURRENT_NODE_HEIGHT" &>/dev/null; then
   echo "Daemon not working correct..."
+  echo "Daemon not working correct..." >> /proc/1/fd/1
   exit 1
 fi
 
