@@ -10,7 +10,7 @@ RUN tar xzvf /tmp/firo-0.14.12.1-linux64.tar.gz -C /tmp \
 && cp /tmp/firo-c7e3ef0e6af6/bin/* /usr/local/bin
 COPY node_initialize.sh /node_initialize.sh
 COPY check-health.sh /check-health.sh
-VOLUME /root/.firo
+VOLUME /root/.neoxa
 RUN chmod 755 node_initialize.sh check-health.sh
 EXPOSE 8168
 HEALTHCHECK --start-period=5m --interval=2m --retries=5 --timeout=15s CMD ./check-health.sh
