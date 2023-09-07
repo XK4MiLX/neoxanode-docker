@@ -14,8 +14,8 @@ get_ip
 RPCUSER=$(pwgen -1 8 -n)
 PASSWORD=$(pwgen -1 20 -n)
 
-if [[ -f /root/.firo/firo.conf ]]; then
-  rm  /root/.firo/firo.conf
+if [[ -f /root/.neoxa/neoxa.conf ]]; then
+  rm  /root/.neoxa/neoxa.conf
 fi
 
 touch /root/.neoxa/neoxa.conf
