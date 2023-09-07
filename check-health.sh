@@ -15,7 +15,7 @@ function max(){
 }
 
 NETWORK_BLOCK_HEIGHT1=$(curl -SsL https://chainz.cryptoid.info/firo/api.dws?q=getblockcount)
-NETWORK_BLOCK_HEIGHT2=$(curl -SsL https://explorer.firo.org/api/status?q=getInfo | jq .info.blocks)
+NETWORK_BLOCK_HEIGHT2=$(curl -SsL https://explorer.neoxa.net/api/status?q=getInfo | jq .info.blocks)
 
 CURRENT_NODE_HEIGHT=$(firo-cli getinfo | jq '.blocks')
 if ! egrep -o "^[0-9]+$" <<< "$CURRENT_NODE_HEIGHT" &>/dev/null; then
