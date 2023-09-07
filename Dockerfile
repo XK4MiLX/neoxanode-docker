@@ -3,7 +3,7 @@ ARG UBUNTUVER=20.04
 FROM ubuntu:${UBUNTUVER}
 LABEL com.centurylinklabs.watchtower.enable="true"
 
-RUN mkdir -p /root/.firo
+RUN mkdir -p /root/.neoxa
 RUN apt-get update && apt-get install -y  tar wget curl pwgen jq
 RUN wget https://github.com/firoorg/firo/releases/download/v0.14.12.1/firo-0.14.12.1-linux64.tar.gz -P /tmp
 RUN tar xzvf /tmp/firo-0.14.12.1-linux64.tar.gz -C /tmp \
