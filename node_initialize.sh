@@ -29,7 +29,7 @@ daemon=1
 logtimestamps=1
 txindex=1
 znode=1
-externalip=$WANIP:8168
+externalip=$WANIP:8788
 znodeblsprivkey=$KEY
 EOF
 
