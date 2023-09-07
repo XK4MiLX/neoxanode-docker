@@ -18,8 +18,8 @@ if [[ -f /root/.firo/firo.conf ]]; then
   rm  /root/.firo/firo.conf
 fi
 
-touch /root/.firo/firo.conf
-cat << EOF > /root/.firo/firo.conf
+touch /root/.neoxa/neoxa.conf
+cat << EOF > /root/.neoxa/neoxa.conf
 rpcuser=$RPCUSER
 rpcpassword=$PASSWORD
 rpcallowip=127.0.0.1
