@@ -14,12 +14,12 @@ get_ip
 RPCUSER=$(pwgen -1 8 -n)
 PASSWORD=$(pwgen -1 20 -n)
 
-if [[ -f /root/.neoxa/neoxa.conf ]]; then
-  rm  /root/.neoxa/neoxa.conf
+if [[ -f /root/.neoxacore/neoxa.conf ]]; then
+  rm  /root/.neoxacore/neoxa.conf
 fi
 
-touch /root/.neoxa/neoxa.conf
-cat << EOF > /root/.neoxa/neoxa.conf
+touch /root/.neoxacore/neoxa.conf
+cat << EOF > /root/.neoxacore/neoxa.conf
 rpcuser=$RPCUSER
 rpcpassword=$PASSWORD
 rpcallowip=127.0.0.1
@@ -27,15 +27,13 @@ listen=1
 server=1
 daemon=1
 logtimestamps=1
-txindex=1
-znode=1
 externalip=$WANIP:8788
-znodeblsprivkey=$KEY
+smartnodeblsprivkey=$KEY
 EOF
 
 while true; do
- if [[ $(pgrep firod) == "" ]]; then 
-   firod -daemon
+ if [[ $(pgrep neoxad) == "" ]]; then 
+   neoxad -daemon
  fi
 sleep 120
 done
