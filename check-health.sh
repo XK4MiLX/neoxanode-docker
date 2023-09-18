@@ -15,7 +15,7 @@ function max(){
 }
 
 NETWORK=(
-"curl -sk -m 10 https://explorer.neoxa.net/api/getblockcount"
+"$(curl -sk -m 10 https://explorer.neoxa.net/api/getblockcount)"
 )
 
 CURRENT_NODE_HEIGHT=$(neoxa-cli getblockchaininfo | jq '.blocks')
