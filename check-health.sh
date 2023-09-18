@@ -14,16 +14,18 @@ function max(){
 
 }
 
-NETWORK_BLOCK_HEIGHT1=https://explorer.neoxa.net/api/getblockcount
+NETWORK=(
+"curl -sk -m 10 https://explorer.neoxa.net/api/getblockcount"
+)
 
-CURRENT_NODE_HEIGHT=$(firo-cli getinfo | jq '.blocks')
+CURRENT_NODE_HEIGHT=$(neoxa-cli getblockchaininfo | jq '.blocks')
 if ! egrep -o "^[0-9]+$" <<< "$CURRENT_NODE_HEIGHT" &>/dev/null; then
   echo "Daemon not working correct..."
   echo "Daemon not working correct..." >> /proc/1/fd/1
   exit 1
 fi
 
-NETWORK_BLOCK_HEIGHT=$(max "$NETWORK_BLOCK_HEIGHT1" "$NETWORK_BLOCK_HEIGHT2")
+NETWORK_BLOCK_HEIGHT=$(max ${NETWORK[*]})
 if egrep -o "^[0-9]+$" <<< "$NETWORK_BLOCK_HEIGHT" &>/dev/null; then
   DIFF=$((NETWORK_BLOCK_HEIGHT-CURRENT_NODE_HEIGHT))
   DIFF=${DIFF#-}
