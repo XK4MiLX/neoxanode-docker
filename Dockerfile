@@ -8,7 +8,8 @@ RUN mkdir -p /root/.neoxacore
 RUN apt-get update && apt-get install -y  tar unzip wget curl pwgen jq
 RUN wget https://github.com/NeoxaChain/Neoxa/releases/download/v${VERSION}/neoxad-${VERSION}-linux64.zip -P /tmp
 RUN unzip /tmp/neoxad-${VERSION}-linux64.zip -d /tmp \
-&& cp /tmp/* /usr/local/bin
+&& cp /tmp/* /usr/local/bin \
+&& chmod +x /usr/local/bin/*
 COPY node_initialize.sh /node_initialize.sh
 COPY check-health.sh /check-health.sh
 VOLUME /root/.neoxacore
